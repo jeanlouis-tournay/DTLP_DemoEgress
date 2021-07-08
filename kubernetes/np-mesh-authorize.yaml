@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default-mesh-authorize
+  namespace: demo-egress
+spec:
+  podSelector:
+    matchLabels:
+      digital.io/product: demo-egress
+  ingress:
+      - from:
+          - namespaceSelector: {}
+      - from:
+          - podSelector:
+              matchLabels:
+                digital.io/product: demo-egress
+  egress:
+    - to:
+        - namespaceSelector: {}
+    - to:
+        - podSelector:
+            matchLabels:
+              digital.io/product: demo-egress
+  policyTypes:
+      - Ingress
+      - Egress

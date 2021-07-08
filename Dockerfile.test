@@ -1,0 +1,14 @@
+# syntax = docker/dockerfile:1.0-experimental
+
+FROM golang:1.16 AS test
+WORKDIR /src/
+COPY go.* /src/
+COPY cmd/. /src/cmd/
+COPY pkg/. /src/pkg/
+COPY scripts/*.sh /
+RUN chmod a+x /*.sh
+RUN go mod download
+RUN go get golang.org/x/lint/golint
+RUN go get github.com/jstemmer/go-junit-report
+RUN go get github.com/axw/gocov/...
+RUN go get github.com/AlekSi/gocov-xml

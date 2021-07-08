@@ -1,0 +1,19 @@
+# syntax = docker/dockerfile:1.0-experimental
+
+ARG DOCKER_REGISTRY_URL
+
+# Build image
+FROM golang:1.16 AS build
+ARG SERVICE_NAME=${SERVICE_NAME}
+ARG LDFLAGS=${LDFLAGS}
+WORKDIR /src/
+COPY go.* /src/
+COPY cmd/. /src/cmd/
+COPY pkg/. /src/pkg/
+RUN go mod download
+RUN GOOS=linux GOARCH=amd64 go build -ldflags "${LDFLAGS}" -v -o ./bin/app ./cmd/${SERVICE_NAME}
+
+# Release image
+FROM ${DOCKER_REGISTRY_URL}/product-deployment-base:latest as release
+COPY --chown=eurocontrol:eurocontrol --from=build /src/bin/app bin/
+RUN chmod +x bin/*

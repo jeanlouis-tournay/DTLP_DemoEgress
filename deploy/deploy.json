@@ -1,0 +1,11 @@
+{
+  "productName": "demo-egress",
+  "specificationName": "spec-01",
+  "componentSpecifications": {
+    "demo-egress": [
+      {
+        "version": "1.0.0"
+      }
+    ]
+  }
+}

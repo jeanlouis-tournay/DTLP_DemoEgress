@@ -1,0 +1,5 @@
+{
+    "name": "product-operator",
+    "environment": "nm-dev",
+    "dnsIngressDomain": "apps.envi.envi.dplt.eu"
+}

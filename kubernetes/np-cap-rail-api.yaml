@@ -1,0 +1,15 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: np-cap-rail-api
+  namespace: demo-egress
+spec:
+  podSelector:
+    matchLabels:
+      cap-rail-api: "true"
+  egress:
+    - to:
+        - ipBlock:
+            cidr: 0.0.0.0/0
+  policyTypes:
+    - Egress

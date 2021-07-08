@@ -1,0 +1,24 @@
+{
+  "name": "demo-egress",
+  "description": "demo egress",
+  "version": "1.0.0",
+  "platformVersion": "1.0.0",
+  "components": [
+    {
+      "name": "demo-egress",
+      "description": "demo egress",
+      "controllerType": "deployment",
+      "imageName": "docker.io/eurocontroldplt/demo-egress-http:0.0.7",
+      "containerType": "generic",
+      "serviceEndPoint": {
+        "name": "demo-egress",
+        "port": 8000,
+        "protocol": "http",
+        "visibleByGateway": true
+      },
+     "platformService": {
+        "rail-api" : {}
+     }
+    }
+  ]
+}

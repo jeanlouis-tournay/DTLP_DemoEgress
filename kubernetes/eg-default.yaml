@@ -1,0 +1,10 @@
+apiVersion: network.openshift.io/v1
+kind: EgressNetworkPolicy
+metadata:
+  name: default-rules
+  namespace: demo-egress
+spec:
+  egress:
+    - type: Deny
+      to:
+        cidrSelector: 0.0.0.0/0

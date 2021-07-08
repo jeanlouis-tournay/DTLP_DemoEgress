@@ -1,0 +1,23 @@
+{
+  "name": "rail-api",
+  "description": "External service to Belgium Railways API",
+  "environment": "nm-dev",
+  "serviceType": "externalService",
+  "connection": {
+    "port": {
+      "number": 443,
+      "name": "tls",
+      "protocol": "TLS"
+    },
+    "hosts": [
+      "api.irail.be"
+    ],
+    "tls": {
+      "mode": "PASSTHROUGH"
+    }
+  },
+  "configuration": {
+    "generic": {
+    }
+  }
+}
